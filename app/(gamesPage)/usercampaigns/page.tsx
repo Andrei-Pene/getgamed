@@ -1,12 +1,30 @@
 import NewCampaign from "../../../components/NewCampaign"
+import { getUserFromCookie } from "../../../lib/auth"
+import { cookies } from "next/headers"
+import { db } from "../../../lib/db"
+import CardList from "../../../components/CardList"
 
-const UserCampaigns = () => {
+const getData = async() => {
+    const user = await getUserFromCookie(cookies())
+
+    return await db.user.findUnique({
+        where : {
+            id : user?.id
+        },
+        include: {
+            Games : true
+        }
+    })
+}
+
+
+const UserCampaigns = async() => {
+    const data = await getData()
     return(
         <div>
-            <div className="relative w-screen h-20 mx-auto shadow-lg bg-slate-500 shadow-cyan-500 flex justify-center ">
-                <h2 className="font-mono text-4xl text-white  px-4"> Xerxes Games</h2>
-            </div>
+            
         <NewCampaign />
+        <CardList data={data?.Games} />
         </div>
     )
 

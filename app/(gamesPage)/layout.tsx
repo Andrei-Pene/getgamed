@@ -1,4 +1,4 @@
-
+import Header from "../../components/Header"
 
 export default function GamesHomeLayout({
   children,
@@ -8,10 +8,15 @@ export default function GamesHomeLayout({
   return (
     <html>
       <head />
-      <body
-      className='h-screen w-screen bg-gradient-to-b from-slate-800 via-orange-300 to-cyan-500'
       
-      >{children}</body>
+      <body
+      className='h-screen w-screen bg-gradient-to-r from-slate-800 via-gray-400 to-black'
+      >
+      <Header />
+        
+      {children}
+      </body>
+      <div id="modal"> </div>
     </html>
   )
 }

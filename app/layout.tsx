@@ -1,5 +1,6 @@
 import './globals.css';
 
+
 export default function RootLayout({
   children,
 }: {
@@ -9,7 +10,6 @@ export default function RootLayout({
     <html>
       <head />
       <body>{children}</body>
-      <div id="modal"> </div>
     </html>
   )
 }

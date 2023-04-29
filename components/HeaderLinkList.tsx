@@ -3,7 +3,7 @@ import HeaderLink from "./HeaderLink"
 const HeaderLinkList = () => {
     const linkList = [
         {
-            linkUrl : '/home',
+            linkUrl : '/allgames',
             linkName : 'Home',
             id : 1
         

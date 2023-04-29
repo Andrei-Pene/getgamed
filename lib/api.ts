@@ -33,3 +33,15 @@ export const signin = (user) => {
 export const createCampaign = (campaign) => {
     return dataFetch({url : '/api/newcampaign ', method : 'post', body : campaign})
 }
+
+export const donateToCampaign = (amount) => {
+    return dataFetch({url : '/api/donate ', method : 'post', body : amount})
+}
+
+export const deleteCampaign = (campaign) => {
+    return dataFetch({url : '/api/deletecampaign', method : 'delete', body : campaign})
+}
+
+export const updateCampaign = (campaign) => {
+    return dataFetch({url : '/api/updatecampaign', method : 'put', body : campaign})
+}

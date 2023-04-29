@@ -1,16 +1,27 @@
-import Header from "../../../components/Header"
-import Card from "../../../components/Card"
-import Image from 'next/image'
-import mario from '../../../assets/mario.jpg'
 
-export default function Home() {
+import { db } from "../../../lib/db"
+import SearchComp from "../../../components/SearchComp"
+
+
+
+const getData = async() => {
+    return await db.game.findMany({})
+}
+
+
+
+const AllGames = async() => {
+     const data = await getData()
      
         return (
-        <div className="w-screen h-screen">
-            <Header />
+            <div>
+                <SearchComp gameData={data} />
+                
+            </div>
             
-        </div>
         )
 
 
     }
+
+export default AllGames
