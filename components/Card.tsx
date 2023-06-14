@@ -10,7 +10,7 @@ type CardProps = {
 
 const Card = ({className, children}: CardProps) => (
 
-    <div className={clsx('bg-slate-500 rounded-3xl ring-gray-400 ring-4 hover:bg-gray-100', className)}>
+    <div className={clsx('bg-slate-500 rounded-3xl ring-gray-400 ring-4 hover:scale-110 active:scale-100', className)}>
         
        {children}
 

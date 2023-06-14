@@ -1,4 +1,4 @@
-export const dataFetch = async ({url, method, body, json = true}) => {
+export const dataFetch = async ({url, method, body = {}, json = true}) => {
     const response = await fetch(url, {
         method,
         ...(body && {body: JSON.stringify(body)}),
@@ -30,6 +30,10 @@ export const signin = (user) => {
     return dataFetch({url : '/api/signin ', method : 'post', body : user})
 }
 
+export const signout = () => {
+    return dataFetch({url : '/api/signout', method : 'post'})
+}
+
 export const createCampaign = (campaign) => {
     return dataFetch({url : '/api/newcampaign ', method : 'post', body : campaign})
 }
@@ -39,9 +43,10 @@ export const donateToCampaign = (amount) => {
 }
 
 export const deleteCampaign = (campaign) => {
-    return dataFetch({url : '/api/deletecampaign', method : 'delete', body : campaign})
+    return dataFetch({url : '/api/deletecampaign', method : 'post', body : campaign})
 }
 
 export const updateCampaign = (campaign) => {
     return dataFetch({url : '/api/updatecampaign', method : 'put', body : campaign})
 }
+

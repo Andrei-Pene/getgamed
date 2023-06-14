@@ -11,7 +11,7 @@ const CardList = ({data}) => (
             data.map((game) => (
                 
                 <Card key={game.id} className={'my-20 mx-4 w-1/5 h-1/3 rounded overflow-hidden shadow-lg relative'}> 
-                <Image width={500} height={500} src={mario} alt="game image" />
+                <Image width={500} height={500} src={game.screenshotUrl} alt='game' />
                 <Link href={`/game/${game.id}`}>
                     <div className="px-6 py-4">
                         <div  className="font-bold text-xl mb-2 flex space-x-20 ">

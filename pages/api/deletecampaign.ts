@@ -3,12 +3,13 @@ import { validateJWT } from "../../lib/auth";
 
 export default async function DeleteCampaign(req: NextApiRequest, res: NextApiResponse) {
 
-    if (req.method === 'DELETE') {
+    if (req.method === 'POST') {
         const user = await validateJWT(req.cookies[process.env.COOKIE_NAME])
 
         await db.game.delete({
             where : {
-                id: req.body.id
+                id : req.body.id
+               
             }
             
         })

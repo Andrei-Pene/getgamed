@@ -15,7 +15,7 @@ model User {
   createdAt DateTime @default(now())
   devName   String   @unique
   password  String
-  email     String
+  email     String   @unique
   Games     Game[]
 
   Profile Profile[]
@@ -25,8 +25,8 @@ model Game {
   id            String   @id @default(uuid())
   createdAt     DateTime @default(now())
   name          String   @db.VarChar(255)
-  belongsToId   String
-  belongsTo     User     @relation(fields: [belongsToId], references: [id])
+  belongsToId   String?
+  belongsTo     User?    @relation(fields: [belongsToId], references: [id])
   fundingGoal   Int
   amountRaised  Float
   summary       String

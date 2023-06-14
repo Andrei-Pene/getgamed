@@ -27,16 +27,16 @@ const AuthenticatedForm = ({authMode, toggleUrl}: authProps) => {
 
     }
 
-    const submitForm = (e) => {
+    const submitForm = async(e) => {
         e.preventDefault()
 
        if(authMode === "signup") {
-                registerUser(formState)
+                await registerUser(formState)
         }else {
-                signin(formState)
+                await signin(formState)
             }
         setFormState(initialState)
-        router.replace("/home")
+        router.replace("/allgames")
 
        
 
@@ -44,13 +44,13 @@ const AuthenticatedForm = ({authMode, toggleUrl}: authProps) => {
     const [formState, setFormState] = useState(initialState)
     const router = useRouter()
     return (
-    <Card className='my-4 mx-4 w-1/5 h-1/4 flex items-center justify-center'> 
+    <div className='my-4 mx-4 w-1/5 h-1/4 flex items-center justify-center bg-slate-500 rounded-3xl ring-gray-400 ring-4'> 
         <form onSubmit={submitForm} className="px-10 ">
         {
             authMode === "signup" &&
         <InputComp
                 required
-                className={"border-solid border-orange-300 border-3 px-6 py-2 text-lg rounded-3xl w-full mb-2"}
+                className={"border-solid border-gray-400 border-3 px-6 py-2 text-lg rounded-3xl w-full mb-2"}
                 placeholder="Developer"
                 value={formState.devName}
                 onChange={(e) =>  setFormState((state) => ( {...state, devName : e.target.value})) }
@@ -60,7 +60,7 @@ const AuthenticatedForm = ({authMode, toggleUrl}: authProps) => {
          
         <InputComp
                 required
-                className={"border-solid border-orange-300 border-3 px-6 py-2 text-lg rounded-3xl w-full mb-2"}
+                className={"border-solid border-gray-400 border-3 px-6 py-2 text-lg rounded-3xl w-full mb-2"}
                 placeholder="email"
                 value={formState.email}
                 onChange={(e) =>  setFormState((state) => ( {...state, email : e.target.value})) }
@@ -68,21 +68,22 @@ const AuthenticatedForm = ({authMode, toggleUrl}: authProps) => {
             />
         <InputComp
                 required
-                className={"border-solid border-orange-300 border-3 px-6 py-2 text-lg rounded-3xl w-full"}
+                className={"border-solid border-gray-400 border-3 px-6 py-2 text-lg rounded-3xl w-full"}
                 placeholder="password"
+                type="password"
                 value={formState.password}
                 onChange={(e) =>  setFormState((state) => ( {...state, password : e.target.value})) }
 
             />
         <div className=" my-3  flex justify-center">
-            <button type="submit" className="p-1 m-2 border-2 border-orange-300 rounded-lg font-bold hover:scale-110 active:scale-100"> {authMode === "signup" ? "Sign Up" : "Sign In"} </button>
-            <div className="py-3"><Link href={toggleUrl}>{authMode === "signup" ? "Sign in Instead?" : "Create an Account?"} </Link></div>
+            <button type="submit" className="p-1 m-2 border-2 border-gray-400 text-white rounded-lg font-bold hover:scale-110 active:scale-100"> {authMode === "signup" ? "Sign Up" : "Sign In"} </button>
+            <div className="py-3 text-white"><Link href={toggleUrl}>{authMode === "signup" ? "Sign in Instead?" : "Create an Account?"} </Link></div>
         </div>
         
         </form>
         
     
-    </Card>
+    </div>
     )
 
 }

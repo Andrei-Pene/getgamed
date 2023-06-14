@@ -12,7 +12,8 @@ export default async function UpdateCampaign(req: NextApiRequest, res: NextApiRe
             },
             data : {
                 name : req.body.name,
-                summary: req.body.summary
+                summary: req.body.summary,
+                screenshotUrl : req.body.screenshotUrl
             }
 
         })

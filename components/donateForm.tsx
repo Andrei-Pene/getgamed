@@ -7,9 +7,9 @@ import { donateToCampaign } from "../lib/api"
 const DonateForm = ({id}) => {
     const [amount, setAmountState] = useState(0)
 
-    const submitForm = (e) => {
+    const submitForm = async(e) => {
         e.preventDefault()
-        donateToCampaign({
+        await donateToCampaign({
             amount : Number(amount),
             id : id
 
@@ -28,7 +28,7 @@ const DonateForm = ({id}) => {
                     value={amount}
                     onChange={(e) =>  setAmountState(e.target.value) }
                 />
-                <button type="submit" className="p-1 m-2 border-2 border-orange-300 rounded-lg font-bold hover:scale-110 active:scale-100"> Submit Donation </button>
+                <button type="submit" className="p-1 m-2 border-2 border-gray-300 rounded-lg font-bold hover:scale-110 active:scale-100"> Submit Donation </button>
             </form>
 
         </div>
